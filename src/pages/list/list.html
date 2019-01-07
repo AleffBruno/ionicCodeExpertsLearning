@@ -8,16 +8,18 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  <ion-item>
+    <ion-label floating>Titulo</ion-label>
+    <ion-input type="text" [(ngModel)]="product.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>descriçao</ion-label>
+    <ion-input type="text" [(ngModel)]="product.description"></ion-input>
+  </ion-item>
+
+  <p>
+    <button ion-button full (click)="saveProduct(product)">Cadastrar</button>
+  </p>
+
 </ion-content>
