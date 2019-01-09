@@ -26,7 +26,7 @@ export class ListPage {
   getPhoto() {
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.FILE_URI,
+      destinationType: this.camera.DestinationType.DATA_URL, // antes era FILE_URI, com DATA_URL funcionou
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
     }
