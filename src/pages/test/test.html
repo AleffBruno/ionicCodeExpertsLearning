@@ -23,6 +23,13 @@
   
     <ion-card-content>
       {{product.description}}
+      <img src="{{this.currentPicture}}" alt="" *ngIf="currentPicture" width="100%" height="150-px">
+      <p>
+        <button color="danger" ion-button full (click)="getPhoto()">
+          <ion-icon name="camera"></ion-icon>
+          Tirar foto de produto
+        </button>
+      </p>
       <!-- Add card content here! -->
     </ion-card-content>
   
