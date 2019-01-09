@@ -27,8 +27,8 @@ export class TestPage {
               public camera: Camera
             ) {
                 
-              let url = this.navParams.get('api_url');
-              let product_id = this.navParams.get('product_id');
+              //let url = this.navParams.get('api_url');
+              //let product_id = this.navParams.get('product_id');
               let currentProduct = this.navParams.get('currentProduct');
 
               this.product = currentProduct;

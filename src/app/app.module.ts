@@ -11,6 +11,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TestPage } from '../pages/test/test';
 import { HttpModule } from '@angular/http';
 import { Camera } from '@ionic-native/camera';
+import { AuthProvider } from '../providers/auth/auth';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { Camera } from '@ionic-native/camera';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot({name:'__mydb'}),
     HttpModule
   ],
   bootstrap: [IonicApp],
@@ -35,7 +38,8 @@ import { Camera } from '@ionic-native/camera';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Camera
+    Camera,
+    AuthProvider
   ]
 })
 export class AppModule {}
