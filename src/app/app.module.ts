@@ -10,29 +10,34 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TestPage } from '../pages/test/test';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'; //sei la pq tive que importar isso
 import { Camera } from '@ionic-native/camera';
 import { AuthProvider } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ListPage,
-    TestPage
+    TestPage,
+    LoginPage //isso poderia ter sido chamado somente uma vez chamando o "MODULO" em "imports"
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot({name:'__mydb'}),
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     ListPage,
-    TestPage
+    TestPage,
+    LoginPage //isso poderia ter sido chamado somente uma vez chamando o "MODULO" em "imports"
   ],
   providers: [
     StatusBar,

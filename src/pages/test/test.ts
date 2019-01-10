@@ -2,13 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
-/**
- * Generated class for the TestPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -24,7 +18,8 @@ export class TestPage {
               public navParams: NavParams,
               public alertCtrl: AlertController,
               public http:Http,
-              public camera: Camera
+              public camera: Camera,
+              public authProvider: AuthProvider
             ) {
                 
               //let url = this.navParams.get('api_url');
@@ -33,6 +28,10 @@ export class TestPage {
 
               this.product = currentProduct;
               //alert(currentProduct.description);
+  }
+
+  ionViewCanEnter() {
+    return this.authProvider.userIsLogged();
   }
 
   ionViewDidLoad() {
