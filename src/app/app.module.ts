@@ -15,6 +15,7 @@ import { Camera } from '@ionic-native/camera';
 import { AuthProvider } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage';
 import { LoginPage } from '../pages/login/login';
+import { HttpServiceProvider } from '../providers/http-service/http-service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LoginPage } from '../pages/login/login';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
-    AuthProvider
+    AuthProvider,
+    HttpServiceProvider
   ]
 })
 export class AppModule {}

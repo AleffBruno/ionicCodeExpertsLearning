@@ -26,4 +26,8 @@ export class LoginPage {
     //console.log("login");
   }
 
+  logout() {
+    this.authService.logout();
+  }
+
 }

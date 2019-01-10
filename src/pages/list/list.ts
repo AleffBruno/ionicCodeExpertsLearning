@@ -20,6 +20,7 @@ export class ListPage {
   }
 
   saveProduct(product) {
+    //AQUI ERA PRA TER UM POST PRA UMA API PARA CADASTRAR O PRODUTO, MAS PARA ECONOMIZAR TEMPO, NAO FIZ
     console.log(product);
   }
 

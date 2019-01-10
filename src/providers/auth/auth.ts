@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { ToastController } from 'ionic-angular';
 
 
 @Injectable()
 export class AuthProvider {
 
   constructor(public http: HttpClient,
-              public storate: Storage) {
+              public storage: Storage,
+              public toastCrtl: ToastController) {
     //console.log('Hello AuthProvider Provider');
   }
 
@@ -15,21 +17,38 @@ export class AuthProvider {
     //AQUI ERA PRA TER UM POST PARA A API USANDO HTTP, mas para guardar tempo, vai ser hardcode
     // MOCK DE JWT QUE VEIO ABAIXO
     let fakeJwt = "qwe123";
-    this.storate.set('token',fakeJwt); //CUIDADO PARA NAO SALVAR UM OBJETO[so se necessario], SE LIGUE NA "CHAVE"
-    //console.log(credentials);
+    this.storage.set('token',fakeJwt); //CUIDADO PARA NAO SALVAR UM OBJETO[so se necessario], SE LIGUE NA "CHAVE"
+    console.log("LOGIN FUNCTION");
   }
 
   userIsLogged() {
-    this.storate.get('token').then(val => {
+    // isso funciona mas como nao esta no tutorial, vou deixar aqui para exemplo [coloque async na função]
+    // var awaitToken = await this.storage.get('token');
+    // if(awaitToken) {
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+
+    //SE LIGUE NO 'DOUBLE' RETURN ABAIXO
+    return this.storage.get('token').then((val) => {
       if(val) {
         return val;
       } else {
+        let toast = this.toastCrtl.create({
+          message: "Faça login na aplicação",
+          duration: 3000
+        });
+        toast.present();
         return false;
       }
+    }).catch((err) => {
+      console.log(err);
+      return false;
     })
   }
 
   logout() {
-    this.storate.remove('token');
+    this.storage.remove('token');
   }
 }

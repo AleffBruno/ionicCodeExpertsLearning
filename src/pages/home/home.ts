@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TestPage } from '../test/test';
-import { Http } from '@angular/http';
+//import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { HttpServiceProvider } from '../../providers/http-service/http-service';
 
 @Component({
   selector: 'page-home',
@@ -10,17 +11,16 @@ import 'rxjs/add/operator/map';
 })
 export class HomePage {
 
-  private url:string = "https://rocketseat-node.herokuapp.com/api/";
+  
   //public products: Array<{}>;
   public products: any;
 
-  constructor(public navCtrl: NavController,public http: Http) {
-    this.http.get(this.url+"products")
-              .map(res => res.json())
-              .subscribe(data => {
-                let { docs } = data;
-                this.products = docs;
-              })
+  constructor(public navCtrl: NavController,public http: HttpServiceProvider) {
+    this.http.getAll('products')
+    .subscribe(data => {
+      let { docs } = data;
+      this.products = docs;
+    })
   }
 
   goToTestPage() {
@@ -33,7 +33,6 @@ export class HomePage {
     //alert(id);
     this.navCtrl.push(TestPage,{
       'product_id': id,
-      'api_url': this.url,
       'currentProduct' : currentProduct
     });
   }
