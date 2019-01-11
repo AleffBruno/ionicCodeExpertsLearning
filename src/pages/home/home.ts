@@ -17,9 +17,11 @@ export class HomePage {
 
   constructor(public navCtrl: NavController,public http: HttpServiceProvider) {
     this.http.getAll('products')
-    .subscribe(data => {
+      .subscribe(data => {
       let { docs } = data;
       this.products = docs;
+    },error => {
+      console.log(error.json());
     })
   }
 

@@ -11,10 +11,19 @@ export class HttpServiceProvider {
     console.log('Hello HttpServiceProvider Provider');
   }
 
+  //SE LIGUE NOS 'DOUBLE RETURN
   getAll(endpoint) {
     return this.http.get(this.url+endpoint)
               .map(res => {
                 return res.json()
               });
+  }
+
+  get() {
+    //CODE...
+  }
+
+  save() {
+    //CODE...
   }
 }
